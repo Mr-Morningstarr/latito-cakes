@@ -6,15 +6,15 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: Arial, Arial, Helvetica, sans-serif;
 }
 
 body {
-  background-color: rgb(255, 247, 237);
-  color: rgb(63, 42, 29);
+  background-color: rgb(255, 248, 240);
+  color: rgb(60, 40, 30);
 }
 header {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,15 +22,43 @@ header {
   text-align: center;
   gap: 16px;          
   padding: 32px;
-}
+  position: relative;
+  aspect-ratio: 16 / 9;
 
+  background-image: url("images/header-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+header * {
+  position: relative;
+  z-index: 1;
+}
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+header h1,
+header p,
+header a {
+  position: relative;
+  z-index: 1;
+}
 header h1 {
-  font-size: 48px;
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 0px 4px 12px rgba(0,0,0,0.6);
+  font-family: Playfair Display;
 }
 
 header p {
   font-size: 19px;
   max-width: 500px;
+  color: rgb(245, 245, 245);
 }
 
 /* WHATSAPP BUTTON */
@@ -54,6 +82,9 @@ header a:hover {
   padding: 60px 32px;
   background-color: white;
   text-align: center;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
 }
 .products h2 {
   font-size: 36px;
@@ -70,7 +101,16 @@ header a:hover {
   padding: 24px;
   width: 260px;
   border-radius: 16px;
-  transition: transform 0.3s ease box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+/*
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+*/
+}
+.product-card.appear {
+  opacity: 1;
+  transform: translateY(0);
 }
 .product-card h3 {
   font-size: 22px;
@@ -96,7 +136,8 @@ header a:hover {
 .product-card img:hover {
   transform: scale(1.05);
 }
-.order-btn {
+.add-to-cart-btn,
+.checkout-btn {
   margin-top: 14px;
   padding: 10px 20px;
   border: none;
@@ -107,11 +148,98 @@ header a:hover {
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
-.order-btn:hover {
+.add-to-cart-btn.success {
+  background-color: rgb(40, 167, 69) !important; /* Green */
+  transform: scale(0.95);
+}
+.add-to-cart-btn:hover,
+.checkout-btn:hover {
   background-color: hsl(120, 40%, 32%);
   transform: scale(1.05);
 }
+.cart-container {
+  padding: 40px;
+  background: rgb(255, 248, 240);
+  border-top: 2px dashed rgb(245, 124, 0);
+  text-align: center;
+}
+
+#cart-items {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#cart-items li {
+  background: white;
+  margin: 5px auto;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.qty-input {
+  width: 50px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(204, 204, 204);
+  margin-bottom: 10px;
+}
+.remove-btn {
+  background: none;
+  border: none;
+  color: rgb(255, 77, 77);
+  cursor: pointer;
+  margin-left: 15px;
+  transition: transform 0.2s;
+}
+
+.remove-btn:hover {
+  transform: scale(1.2);
+}
+
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    /* ... your existing li styles ... */
+}
+.empty-msg {
+  color: rgb(136, 136, 136);
+  font-style: italic;
+  padding: 20px;
+  text-align: center;
+}
+/*
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: 0.3s;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #128c7e;
+}
+
+/* On mobile, just show the icon */
+/*
+@media (max-width: 600px) {    
+  .whatsapp-float span { display: none; } 
+}
+*/
 
 /* FOOTER */
 .footer {
