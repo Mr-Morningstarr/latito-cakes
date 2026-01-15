@@ -104,3 +104,12 @@ document.getElementById('final-order-btn').addEventListener('click', () => {
   const encodedMessage = encodeURIComponent(orderList);
   window.open(`https://wa.me/234901328833?text=${encodedMessage}`, "_blank");
 });
+
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  
+  // Add a tiny delay so the user actually sees the smooth transition
+  setTimeout(() => {
+      loader.classList.add("loader-hidden");
+  }, 500);
+});
