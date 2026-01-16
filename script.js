@@ -102,7 +102,7 @@ document.getElementById('final-order-btn').addEventListener('click', () => {
   });
 
   const encodedMessage = encodeURIComponent(orderList);
-  window.open(`https://wa.me/234901328833?text=${encodedMessage}`, "_blank");
+  window.open(`https://wa.me/2349013288333?text=${encodedMessage}`, "_blank");
 });
 
 window.addEventListener("load", () => {
@@ -113,3 +113,4 @@ window.addEventListener("load", () => {
       loader.classList.add("loader-hidden");
   }, 500);
 });
+
