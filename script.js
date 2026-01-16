@@ -98,7 +98,7 @@ document.getElementById('final-order-btn').addEventListener('click', () => {
   let orderList = "Hello Latito Cakes! I'd like to order:\n";
   
   cart.forEach(item => {
-      orderList += `_ ${item.qty} x ${item.name}_\n`;
+      orderList += `_${item.qty} x ${item.name}_\n`;
   });
 
   const encodedMessage = encodeURIComponent(orderList);
