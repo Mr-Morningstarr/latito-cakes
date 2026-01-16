@@ -113,4 +113,3 @@ window.addEventListener("load", () => {
       loader.classList.add("loader-hidden");
   }, 500);
 });
-
